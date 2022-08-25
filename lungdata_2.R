@@ -11,7 +11,8 @@ install.packages(c("Seurat", "tidyverse"))
 install.packages('patchwork')
 library(patchwork)
 
-#load pre-processed dataset
+#load pre-processed dataset, my dataset name is data 
+#(suggestion: use another variable name)
 data <- readRDS("C:/Users/OZAN/Downloads/lung_ts.rds")
 
 str(data)
