@@ -6,7 +6,7 @@ install.packages('Seurat')
 library(Seurat)
 
 #or alternative installing 
-install.packages(c("Seurat", "tidyverse"))
+#install.packages(c("Seurat", "tidyverse"))
 #the goal of that package, to combine separate ggplots into the same graphic.
 install.packages('patchwork')
 library(patchwork)
@@ -71,14 +71,6 @@ data <- RunUMAP(data, dims = 1:10)
 DimPlot(data, reduction = "umap")
 
 
-
-cluster0.markers <- FindMarkers(data, ident.1 = 2, min.pct = 0.25)
-head(cluster0.markers, n = 5)
-
-cluster24.markers <- FindMarkers(data, ident.1 = 2, min.pct = 0.25, logfc.threshold = 0.25)
-head(cluster24.markers)
-cluster24.markers
-
 # 9.Cluster biomarkers 
 #find markers for every cluster compared to all remaining cells, report only the positive ones
 data.markers <- FindAllMarkers(data, only.pos = TRUE, min.pct = 0.25, logfc.threshold = 0.25)
@@ -98,7 +90,6 @@ VlnPlot(data, features = c("GNLY", "NKG7", "RGS1", "IL7R", "XCL2", "CD3D"))
 
 FeaturePlot(data, features = c("GNLY", "NKG7", "RGS1", "IL7R", "XCL2", "CD3D"))
 
-
 #DoHeatmap, generates an expression heatmap for given cells and features.
 library(dplyr)
 data.markers %>%
@@ -106,7 +97,7 @@ data.markers %>%
   top_n(n = 10, wt = avg_log2FC) -> top10
 DoHeatmap(data, features = top10$gene) + NoLegend()
 
-# 10.Assigning cell type identity to clusters
+# 10.Assigning cell type identity to clusters (There is information about cell types in paper of that dataset)
 new.cluster.ids <- c("Alveolar_Type1", "Alveolar_Type2", "Basal", "Blood_vessel", "B_cell_mature", "B_cell_naive", "Ciliated", "DC_1", "DC_2", "DC_activated", "DC_Monocyte_Dividing", "DC_plasmacytoid", "Fibroblast", "Lymph_vessel", "Macrophage_Dividing", "Macrophage_MARCOneg", "Macrophage_MARCOpos", "Mast_cells", "Monocyte", "Muscle_cells", "NK", "NK_Dividing", "Plasma_cells", "Secretory_club", "T_CD4", "T_CD8_CytT", "T_cells_Dividing", "T_regulatory")
 names(new.cluster.ids) <- levels(data)
 data <- RenameIdents(data, new.cluster.ids)
