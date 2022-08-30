@@ -1,10 +1,10 @@
 # lungdataanalysis
 scRNA-seq analysis 
-### **Background**
+### **Background information from original article**
 
 The Human Cell Atlas is a large international collaborative effort to map all cell types of the human body. Single-cell RNA sequencing can generate high-quality data for the delivery of such an atlas. However, delays between fresh sample collection and processing may lead to poor data and difficulties in experimental design.
 
-**Results**
+**Results of study**
 
 This study assesses the effect of cold storage on fresh healthy spleen, esophagus, and lung from ≥ 5 donors over 72 h. We collect 240,000 high-quality single-cell transcriptomes with detailed cell type annotations and whole genome sequences of donors, enabling future eQTL studies. Our data provide a valuable resource for the study of these 3 organs and will allow cross-organ comparison of cell types.
 
